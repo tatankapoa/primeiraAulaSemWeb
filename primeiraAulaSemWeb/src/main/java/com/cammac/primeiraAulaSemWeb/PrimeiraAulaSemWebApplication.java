@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.cammac.primeiraAulaSemWeb.model.DadosEpisodio;
 import com.cammac.primeiraAulaSemWeb.model.DadosSerie;
 import com.cammac.primeiraAulaSemWeb.service.ConsumoApi;
 import com.cammac.primeiraAulaSemWeb.service.ConverteDados;
@@ -33,6 +34,12 @@ public class PrimeiraAulaSemWebApplication implements CommandLineRunner {
 		DadosSerie serie = converteDados.obterDados(json, DadosSerie.class);
 		
 		System.out.println(serie);
+		
+		json = consumoApi.obterDados("https://www.omdbapi.com/?t=gilmore+girls&season=1&episode=2&apikey=6585022c");
+		
+		DadosEpisodio dadosEpisodio = converteDados.obterDados(json, DadosEpisodio.class);
+		
+		System.out.println(dadosEpisodio);
 		
 		
 		
